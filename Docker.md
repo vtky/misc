@@ -23,3 +23,8 @@ docker system prune -a
 ```bash
 docker rmi $(docker images -a -q)
 ```
+
+## Remove all services
+```bash
+docker service rm $(docker service ls -q)
+```
