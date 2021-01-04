@@ -28,3 +28,9 @@ docker rmi $(docker images -a -q)
 ```bash
 docker service rm $(docker service ls -q)
 ```
+
+
+## Add Env Variable to Docker Service
+```bash
+docker service update --env-add <you environment variable> <service_name>
+```
