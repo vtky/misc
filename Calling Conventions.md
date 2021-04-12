@@ -2,6 +2,24 @@ Calling Conventions
 ===================
 
 
+Microsoft Windows x64
+-------------
+
+Register | Usage
+-------- | ---
+%rcx | 1st integer argument
+%rdx | 2nd integer argument
+%r8 | 3rd integer argument
+%r9 | 4th integer argument
+
+%rax | return value
+
+* Floating point arguments are passed in XMM0L, XMM1L, XMM2L, and XMM3L.
+* 16-byte arguments are passed by reference. 
+
+* https://docs.microsoft.com/en-us/cpp/build/x64-calling-convention?view=msvc-160
+
+
 System V x64
 -------------
 Parameters to functions are passed in the registers **rdi, rsi, rdx, rcx, r8, r9** and further values are passed on the stack in reverse order.
@@ -14,14 +32,14 @@ Register | Usage
 %rcx | used to pass 4th integer argument to functions
 %r8 | used to pass 5th argument to functions
 %r9 | used to pass 6th argument to functions
-- | -
- %rax | temporary register; with variable arguments passes information about the number of vector registers used; 1st return register
- %xmm0–%xmm1 | used to pass and return floating point arguments
- %xmm2–%xmm7 | used to pass floating point arguments
+%rax | return value. If it is a 128-bit value, then the higher 64-bits go in rdx.
 
-http://wiki.osdev.org/System_V_ABI
+* Functions preserve the registers rbx, rsp, rbp, r12, r13, r14, and r15;
+* While rax, rdi, rsi, rdx, rcx, r8, r9, r10, r11 are scratch registers. 
 
-https://www.uclibc.org/docs/psABI-x86_64.pdf
+
+* http://wiki.osdev.org/System_V_ABI
+* https://www.uclibc.org/docs/psABI-x86_64.pdf
 
 ----------
 
